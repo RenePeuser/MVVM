@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="DotNetGui.MVVMDemo.PeopleList.PeopleListControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:model="clr-namespace:DotNetGui.MVVMDemo.PeopleList.ViewModel"
+    Height="Auto" Width="Auto">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ListViewItem}">
+            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+        </Style>
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True">
+        <ListView DataContext="{Binding Path=.}" ItemsSource="{Binding Path=People}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="FirstName" DisplayMemberBinding="{Binding FirstName, Mode=TwoWay}"/>
+                    <GridViewColumn Header="LastName" DisplayMemberBinding="{Binding LastName, Mode=TwoWay}"/>
+                    <GridViewColumn Header="Birthday" DisplayMemberBinding="{Binding Birthday, Mode=TwoWay}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </DockPanel>
+</UserControl>
